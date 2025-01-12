@@ -46,6 +46,7 @@ describe('DoorList', () => {
       connectionType: 'wired',
       connectionStatus: 'online',
       apartmentName: 'Apartment 1A',
+      lastConnectionStatusUpdate: '2024-02-22T03:00:11.853Z',
     });
     const door2 = buildDoor({
       name: 'Back Door',
@@ -53,6 +54,7 @@ describe('DoorList', () => {
       connectionType: 'wireless',
       connectionStatus: 'offline',
       apartmentName: 'Apartment 2B',
+      lastConnectionStatusUpdate: '2024-02-23T03:00:11.853Z',
     });
     renderDoorList([door1, door2]);
 
@@ -61,18 +63,21 @@ describe('DoorList', () => {
     expect(screen.getByText('Connection type')).toBeInTheDocument();
     expect(screen.getByText('Connection status')).toBeInTheDocument();
     expect(screen.getByText('Apartment name')).toBeInTheDocument();
+    expect(screen.getByText('Last connection status')).toBeInTheDocument();
 
     expect(screen.getByText('Front Door')).toBeInTheDocument();
     expect(screen.getByText('Building A')).toBeInTheDocument();
     expect(screen.getByText('wired')).toBeInTheDocument();
     expect(screen.getByText('online')).toBeInTheDocument();
     expect(screen.getByText('Apartment 1A')).toBeInTheDocument();
+    expect(screen.getByText('2/22/2024, 4:00 AM')).toBeInTheDocument();
 
     expect(screen.getByText('Back Door')).toBeInTheDocument();
     expect(screen.getByText('Building B')).toBeInTheDocument();
     expect(screen.getByText('wireless')).toBeInTheDocument();
     expect(screen.getByText('offline')).toBeInTheDocument();
     expect(screen.getByText('Apartment 2B')).toBeInTheDocument();
+    expect(screen.getByText('2/23/2024, 4:00 AM')).toBeInTheDocument();
   });
   it('renders connection status with correct color', () => {
     const door1 = buildDoor({

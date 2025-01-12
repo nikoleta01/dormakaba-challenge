@@ -2,6 +2,7 @@ import Typography from '@mui/material/Typography';
 import { Door } from '@/models/Door';
 import { DetailPageContainer } from '@/ui/layout/DetailPageContainer';
 import { DetailPageItem } from '@/ui/layout/DetailPageItem';
+import { getLocaleString } from '@/lib/dateTime';
 
 interface DoorDetailProps {
   door: Door;
@@ -10,6 +11,8 @@ interface DoorDetailProps {
 export function DoorDetail({ door }: DoorDetailProps) {
   const connectionColor =
     door.connectionStatus === 'online' ? 'success.main' : 'error.main';
+
+  const formattedDate = getLocaleString(door.lastConnectionStatusUpdate);
   return (
     <DetailPageContainer>
       <DetailPageItem label="ID">
@@ -26,6 +29,9 @@ export function DoorDetail({ door }: DoorDetailProps) {
       </DetailPageItem>
       <DetailPageItem label="Apartment name">
         <Typography>{door.apartmentName}</Typography>
+      </DetailPageItem>
+      <DetailPageItem label="Last connection status">
+        <Typography>{formattedDate}</Typography>
       </DetailPageItem>
     </DetailPageContainer>
   );

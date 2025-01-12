@@ -10,7 +10,9 @@ function renderDoorDetail(door: Door) {
 
 describe('DoorDetail', () => {
   it('should render door details', () => {
-    const door = buildDoor();
+    const door = buildDoor({
+      lastConnectionStatusUpdate: '2024-02-23T03:00:11.853Z',
+    });
     renderDoorDetail(door);
     expect(screen.getByText('ID')).toBeInTheDocument();
     expect(screen.getByText(door.id)).toBeInTheDocument();
@@ -26,6 +28,9 @@ describe('DoorDetail', () => {
 
     expect(screen.getByText('Apartment name')).toBeInTheDocument();
     expect(screen.getByText(door.apartmentName)).toBeInTheDocument();
+
+    expect(screen.getByText('Last connection status')).toBeInTheDocument();
+    expect(screen.getByText('2/23/2024, 4:00 AM')).toBeInTheDocument();
   });
   it('applies green color to connection status online', () => {
     const door = buildDoor({
