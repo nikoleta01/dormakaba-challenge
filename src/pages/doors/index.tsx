@@ -5,7 +5,6 @@ import { Layout } from '@/ui/layout/Layout';
 
 export default function DoorListPage() {
   const { data: doors = [], isSuccess } = useGetAllDoorsQuery();
-
   return (
     <>
       <Head>

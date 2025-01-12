@@ -28,13 +28,25 @@ const columns: GridColDef<Door>[] = [
     field: 'connectionStatus',
     headerName: 'Connection status',
     flex: 1,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     renderCell: ({ row: door }) => {
       return (
-        <Typography component="span" color="success.main">
-          online
+        <Typography
+          component="span"
+          color={
+            door.connectionStatus === 'online' ? 'success.main' : 'error.main'
+          }
+        >
+          {door.connectionStatus}
         </Typography>
       );
+    },
+  },
+  {
+    field: 'apartmentName',
+    headerName: 'Apartment name',
+    flex: 1,
+    renderCell: ({ row: door }) => {
+      return <Typography component="span">{door.apartmentName}</Typography>;
     },
   },
 ];

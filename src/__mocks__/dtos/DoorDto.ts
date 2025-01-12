@@ -6,4 +6,5 @@ export interface DoorDto {
   last_connection_status_update: string;
   building_id: string;
   apartment_id?: string;
+  apartment_name?: string;
 }
