@@ -8,6 +8,8 @@ interface DoorDetailProps {
 }
 
 export function DoorDetail({ door }: DoorDetailProps) {
+  const connectionColor =
+    door.connectionStatus === 'online' ? 'success.main' : 'error.main';
   return (
     <DetailPageContainer>
       <DetailPageItem label="ID">
@@ -20,13 +22,7 @@ export function DoorDetail({ door }: DoorDetailProps) {
         <Typography>{door.connectionType}</Typography>
       </DetailPageItem>
       <DetailPageItem label="Connection status">
-        <Typography
-          color={
-            door.connectionStatus === 'online' ? 'success.main' : 'error.main'
-          }
-        >
-          {door.connectionStatus}
-        </Typography>
+        <Typography color={connectionColor}>{door.connectionStatus}</Typography>
       </DetailPageItem>
       <DetailPageItem label="Apartment name">
         <Typography>{door.apartmentName}</Typography>

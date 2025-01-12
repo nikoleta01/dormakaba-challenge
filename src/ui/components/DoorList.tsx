@@ -8,6 +8,9 @@ interface DoorListProps {
   doors: Door[];
 }
 
+const connectionColor = (door: Door) =>
+  door.connectionStatus === 'online' ? 'success.main' : 'error.main';
+
 const columns: GridColDef<Door>[] = [
   {
     field: 'name',
@@ -30,12 +33,7 @@ const columns: GridColDef<Door>[] = [
     flex: 1,
     renderCell: ({ row: door }) => {
       return (
-        <Typography
-          component="span"
-          color={
-            door.connectionStatus === 'online' ? 'success.main' : 'error.main'
-          }
-        >
+        <Typography component="span" color={connectionColor(door)}>
           {door.connectionStatus}
         </Typography>
       );
